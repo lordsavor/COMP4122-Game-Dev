@@ -8,6 +8,18 @@ public class PlaneMovement : MonoBehaviour
     public float increaseSpeed = 0.1f;
     private float relativeResponse;
 
+    //input variables
+
+    float pitchMouse;
+    float pitchKey;
+
+    float rollMouse;
+    float rollKey;
+
+    float yawKey;
+
+    //final axis input variables
+
     float roll;
     float pitch;
     float yaw;
@@ -15,6 +27,11 @@ public class PlaneMovement : MonoBehaviour
 
     Rigidbody planeRB;
     public float minTakeOffSpeed = 100f;
+
+    public float pitchSpeed = 100f;
+    public float rollSpeed = 10f;
+    public float yawSpeed = 300f;
+
 
     private void Awake() {
         planeRB = GetComponent<Rigidbody>();
@@ -28,12 +45,14 @@ public class PlaneMovement : MonoBehaviour
     }
 
     private void Update() {
-        //front to back
-        roll = Input.GetAxis("Mouse Y");
-        //side to side
-        pitch = Input.GetAxis("Mouse X");
-        //rotation around vertical
-        yaw = Input.GetAxis("Yaw");
+
+        pitchMouse = Input.GetAxis("Mouse Y");
+        pitchKey = Input.GetAxis("PitchKey");
+
+        rollMouse = Input.GetAxis("Mouse X");
+        rollKey = Input.GetAxis("RollKey");
+ 
+        yawKey = Input.GetAxis("Yaw");
 
         if(Input.GetKey(KeyCode.LeftShift)) currentSpeed += increaseSpeed;
         //Brake? Idk or slow down
@@ -48,9 +67,16 @@ public class PlaneMovement : MonoBehaviour
         Vector3 lForward = Camera.main.transform.forward;
         planeRB.AddForce(lForward * maxSpeed * currentSpeed);
 
-        planeRB.AddRelativeTorque(Vector3.forward * roll * 300f);
-        planeRB.AddRelativeTorque(Vector3.up * pitch * 300f);
-        planeRB.AddRelativeTorque(Vector3.right * yaw * 300f);
+        // prioritize keyboard input over mouse input
+
+        pitch = (pitchKey == 0) ? pitchMouse : pitchKey;
+        roll = (rollKey == 0) ? rollMouse : rollKey;
+
+        yaw = yawKey;
+
+        planeRB.AddRelativeTorque(Vector3.forward * pitch * pitchSpeed);
+        planeRB.AddRelativeTorque(Vector3.up * yaw * yawSpeed);
+        planeRB.AddRelativeTorque(Vector3.right * roll * rollSpeed);
 
         planeRB.AddForce(Vector3.up * planeRB.velocity.magnitude * minTakeOffSpeed);
     }
