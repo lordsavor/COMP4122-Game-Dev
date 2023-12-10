@@ -514,11 +514,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 150
-  increaseSpeed: 0.1
+  acceleration: 1
   minTakeOffSpeed: 100
   pitchSpeed: 300
   rollSpeed: 300
-  yawSpeed: 300
+  yawSpeed: 100
 --- !u!54 &1208182986
 Rigidbody:
   m_ObjectHideFlags: 0
