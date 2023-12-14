@@ -35,6 +35,13 @@ public class PlaneMovement : MonoBehaviour
     public float rollSpeed;
     public float yawSpeed;
 
+    //unlocks certain rigid body elements
+    public Vector3 tensor;
+    public float maxAngularVelocity;
+    //private Vector3 angularVelocity = new Vector3();
+
+    private Vector3 tensorBrake = new Vector3 (9999,9999,9999);
+    private Vector3 currentTensor = new Vector3 (1,1,1);
 
     private void Awake() {
         planeRB = GetComponent<Rigidbody>();
@@ -45,6 +52,9 @@ public class PlaneMovement : MonoBehaviour
         currentSpeed = 0;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //unlocks inertia tensor
+        planeRB.inertiaTensor = tensor;
     }
 
     private void Update() {
@@ -64,12 +74,25 @@ public class PlaneMovement : MonoBehaviour
 
     private void FixedUpdate() {
 
+        // Determine maxAngularVeloctiy, might change depending on special abilities (e.g. plane go spin ability)
+        // Would've liked it more if I can just max pitch,roll, and yaw separately. So this is a bandaid solution
+        planeRB.maxAngularVelocity = maxAngularVelocity;
 
         // process input sources
         pitch = (pitchKey == 0) ? pitchMouse : pitchKey;    // keyboard > mouse input
         roll = (rollKey == 0) ? rollMouse : rollKey;
         yaw = yawKey;
         thrust = thrustKey;
+
+        // experimental: playing with tensors to increase plane stability
+
+        currentTensor.Set(
+            (pitch == 0) ?  tensorBrake.x : tensor.x,
+            (yaw == 0) ? tensorBrake.y : tensor.y,
+            (roll == 0) ? tensorBrake.z : tensor.z
+        );
+        planeRB.inertiaTensor = currentTensor;
+        planeRB.angularDrag = (pitch == 0 && yaw == 0 && roll == 0)  ? 10 : 1;
 
         // input -> movement
 
@@ -78,9 +101,15 @@ public class PlaneMovement : MonoBehaviour
         Vector3 lForward = Camera.main.transform.forward;
         planeRB.AddForce(lForward * maxSpeed * currentSpeed);
 
-        planeRB.AddRelativeTorque(Vector3.forward * pitch * pitchSpeed);
-        planeRB.AddRelativeTorque(Vector3.up * yaw * yawSpeed);
-        planeRB.AddRelativeTorque(Vector3.right * roll * rollSpeed);
+        ForceMode mode = ForceMode.Impulse;
+        planeRB.AddRelativeTorque(Vector3.right * pitch * pitchSpeed, mode);
+        planeRB.AddRelativeTorque(Vector3.up * yaw * yawSpeed, mode);
+        planeRB.AddRelativeTorque(-Vector3.forward * roll * rollSpeed, mode);
+
+        /*
+        angularVelocity.Set(pitch * pitchSpeed, yaw * yawSpeed, roll * rollSpeed);
+        planeRB.angularVelocity = angularVelocity;
+        */
 
         // lift calculation
         planeRB.AddForce(Vector3.up * planeRB.velocity.magnitude * minTakeOffSpeed);
@@ -89,4 +118,5 @@ public class PlaneMovement : MonoBehaviour
         if (currentSpeed <= 10f) currentSpeed = 10f;
         else if (currentSpeed >= 100.5f) currentSpeed = 100f;
     }
+
 }
