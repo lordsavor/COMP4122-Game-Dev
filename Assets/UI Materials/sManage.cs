@@ -8,11 +8,11 @@ public class sManage : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Stage_Select");
     }
     public void Continue()
     {
-
+        SceneManager.LoadScene("Stage_Select");
     }
     public void Tutorial()
     {
