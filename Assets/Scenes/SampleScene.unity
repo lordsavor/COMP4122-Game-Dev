@@ -149,7 +149,7 @@ MonoBehaviour:
   tensor: {x: 100, y: 100, z: 100}
   maxAngularVelocity: 1.5
   vel: {fileID: 166225392}
-  velSpinMult: 1.5
+  velSpinMult: 3
 --- !u!65 &166225388
 BoxCollider:
   m_ObjectHideFlags: 0
