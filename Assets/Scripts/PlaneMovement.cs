@@ -29,6 +29,7 @@ public class PlaneMovement : MonoBehaviour
     float currentSpeed = 10f;
 
     Rigidbody planeRB;
+    public float startingSpeed;
     public float minTakeOffSpeed;
 
     public float pitchSpeed;
@@ -49,13 +50,17 @@ public class PlaneMovement : MonoBehaviour
     }
 
     private void Start() {
-        currentSpeed = 0;
+        currentSpeed = startingSpeed;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         //unlocks inertia tensor
         planeRB.inertiaTensor = tensor;
     }
+
+    public Vel vel;
+    public float velSpinMult;
+    float spinModifier;
 
     private void Update() {
 
@@ -74,9 +79,14 @@ public class PlaneMovement : MonoBehaviour
 
     private void FixedUpdate() {
 
-        // Determine maxAngularVeloctiy, might change depending on special abilities (e.g. plane go spin ability)
+        // Vel Spin Effect Calculator
+
+        if (vel.velSpin) spinModifier = velSpinMult;
+        else spinModifier = 1;
+
+        // Determine maxAngularVelocty, might change depending on special abilities (e.g. plane go spin ability)
         // Would've liked it more if I can just max pitch,roll, and yaw separately. So this is a bandaid solution
-        planeRB.maxAngularVelocity = maxAngularVelocity;
+        planeRB.maxAngularVelocity = maxAngularVelocity * spinModifier;
 
         // process input sources
         pitch = (pitchKey == 0) ? pitchMouse : pitchKey;    // keyboard > mouse input
@@ -92,7 +102,7 @@ public class PlaneMovement : MonoBehaviour
             (roll == 0) ? tensorBrake.z : tensor.z
         );
         planeRB.inertiaTensor = currentTensor;
-        planeRB.angularDrag = (pitch == 0 && yaw == 0 && roll == 0)  ? 10 : 1;
+        planeRB.angularDrag = (pitch == 0 && yaw == 0 && roll == 0)  ? 8 : 1;
 
         // input -> movement
 
@@ -102,9 +112,9 @@ public class PlaneMovement : MonoBehaviour
         planeRB.AddForce(lForward * maxSpeed * currentSpeed);
 
         ForceMode mode = ForceMode.Impulse;
-        planeRB.AddRelativeTorque(Vector3.right * pitch * pitchSpeed, mode);
-        planeRB.AddRelativeTorque(Vector3.up * yaw * yawSpeed, mode);
-        planeRB.AddRelativeTorque(-Vector3.forward * roll * rollSpeed, mode);
+        planeRB.AddRelativeTorque(Vector3.right * pitch * pitchSpeed * spinModifier, mode);
+        planeRB.AddRelativeTorque(Vector3.up * yaw * yawSpeed * spinModifier, mode);
+        planeRB.AddRelativeTorque(-Vector3.forward * roll * rollSpeed * spinModifier, mode);
 
         /*
         angularVelocity.Set(pitch * pitchSpeed, yaw * yawSpeed, roll * rollSpeed);
