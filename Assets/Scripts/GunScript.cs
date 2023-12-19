@@ -36,10 +36,11 @@ public class GunScript : MonoBehaviour
         float planeSpeed = GetComponentInParent<Rigidbody>().velocity.magnitude;
         float scaledBulletSpeed = bulletBaseSpeed + planeSpeed; // Adjust this scaling factor as needed
 
-        // Print the plane speed to the console
-        Debug.Log("Plane Speed: " + planeSpeed);
         
         bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * scaledBulletSpeed;
+
+        // Set the tag of the spawned bullet to "Bullet"
+        bullet.tag = "Bullet";
 
         // Destroy the bullet after 5 seconds (adjust as needed)
         Destroy(bullet, 5f);
