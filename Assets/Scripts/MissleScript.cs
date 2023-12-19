@@ -29,12 +29,11 @@ public class MissleScript : MonoBehaviour
         canFire = false;
 
         GameObject missile = Instantiate(misslePrefab, missleSpawnPoint.position, missleSpawnPoint.rotation);
-        Tarodev.Missile missileScript = missile.AddComponent<Tarodev.Missile>();
+        Tarodev.Missile missileScript = missile.GetComponent<Tarodev.Missile>();
         if (missileScript != null)
         {
             missileScript.ChangeTarget(targetObject);
             missileScript.SetIsCloned(true);
-            missileScript.ChangeRB(missile.GetComponent<Rigidbody>());
         }
 
         yield return new WaitForSeconds(timeBetweenShots);

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 3502654976704766322}
   - component: {fileID: 184470500350564771}
   - component: {fileID: 265837478554460588}
+  - component: {fileID: 2546164236554373884}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6218341245850011874}
-  m_LocalRotation: {x: -0.30342135, y: 0.29422566, z: -0.34232265, w: 0.83915555}
+  m_LocalRotation: {x: -0.30341992, y: 0.29422808, z: -0.34232578, w: 0.83915395}
   m_LocalPosition: {x: 17.56, y: 10.61, z: 18.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -171,6 +172,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2546164236554373884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218341245850011874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc1c96910eb7294dac55550d8917eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 184470500350564771}
+  _target: {fileID: 0}
+  _explosionPrefab: {fileID: 5923536954740281492, guid: 3f42eec59b854cb49b25629bd5a99928,
+    type: 3}
+  _speed: 15
+  _rotateSpeed: 95
+  _maxDistancePredict: 100
+  _minDistancePredict: 5
+  _maxTimePrediction: 5
+  _deviationAmount: 50
+  _deviationSpeed: 2
 --- !u!1 &7604778225646678301
 GameObject:
   m_ObjectHideFlags: 0
