@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!54 &1470862796381797912
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776920991858228837}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1470862796381797913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776920991858228837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0a8573864079b4cb264baf6761ed7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkpoint: {fileID: 0}
-  moveSpeed: 5
-  traceSpeed: 10
-  acceleration: 5
-  traceOffset: 10
-  player: {fileID: 0}
-  sightRange: 80
-  attackRange: 50
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  bulletSpawnPoint: {fileID: 1470862797850987114}
-  bulletPrefab: {fileID: 7873058181185562387, guid: 41d0bda255409a54f9642828fdc85982,
-    type: 3}
-  bulletBaseSpeed: 200
 --- !u!1 &1470862797465487802
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +61,65 @@ Transform:
   m_Father: {fileID: 1433046928959251679}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1470862796381797912
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776920991858228837}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1470862796381797913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776920991858228837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0a8573864079b4cb264baf6761ed7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpoint: {fileID: 0}
+  moveSpeed: 5
+  traceSpeed: 10
+  acceleration: 5
+  traceOffset: 10
+  player: {fileID: 0}
+  sightRange: 80
+  attackRange: 50
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  bulletSpawnPoint: {fileID: 1470862797850987114}
+  bulletPrefab: {fileID: 7873058181185562387, guid: 41d0bda255409a54f9642828fdc85982,
+    type: 3}
+  bulletBaseSpeed: 200
+--- !u!114 &1481455632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776920991858228837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d03c33a98638c341ab7c3b3a8d9704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6346448195224834980, guid: 3f42eec59b854cb49b25629bd5a99928,
+    type: 3}
 --- !u!1001 &1470862796549374772
 PrefabInstance:
   m_ObjectHideFlags: 0

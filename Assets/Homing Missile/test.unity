@@ -1159,11 +1159,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 234679383}
     m_Modifications:
-    - target: {fileID: 1470862796381797912, guid: fa160d8cade3c094cb28392147a683b6,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1470862796381797913, guid: fa160d8cade3c094cb28392147a683b6,
         type: 3}
       propertyPath: checkpoint
@@ -1308,5 +1303,16 @@ PrefabInstance:
       propertyPath: Checkpoint
       value: 
       objectReference: {fileID: 312699966}
+    - target: {fileID: 1838773988817598868, guid: 6a4ca336599d38240a314d2bddd49168,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7873058181185562387, guid: 41d0bda255409a54f9642828fdc85982,
+        type: 3}
+    - target: {fileID: 1838773988817598868, guid: 6a4ca336599d38240a314d2bddd49168,
+        type: 3}
+      propertyPath: bulletBaseSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a4ca336599d38240a314d2bddd49168, type: 3}
