@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class KeyboardCapture : MonoBehaviour
+public class EscapeCapture : MonoBehaviour
 {
 
     // Update is called once per frame
