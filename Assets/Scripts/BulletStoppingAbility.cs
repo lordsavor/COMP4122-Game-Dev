@@ -10,15 +10,18 @@ public class BulletStoppingAbility : MonoBehaviour
     public float maxStoppingRange = 2f;
     public float stoppingTime = 1f;
     public GameObject sphereEffectPrefab;
+    public float abilityCooldown = 10f; // Cooldown time in seconds
 
     private GameObject sphereEffect;
     private Material sphereEffectMaterial;
     public LayerMask sphereEffectLayer;
+    private bool isCooldown = false; // Tracks whether the ability is on cooldown
+    private bool isAbilityActive = true; // Tracks whether the ability can currently be used
 
     private void Start()
     {
-        sphereEffect.layer = sphereEffectLayer;
         sphereEffect = Instantiate(sphereEffectPrefab, transform.position, Quaternion.identity);
+        sphereEffect.layer = sphereEffectLayer;
         sphereEffectMaterial = sphereEffect.GetComponent<Renderer>().material;
         sphereEffect.transform.localScale = Vector3.zero;
         sphereEffect.SetActive(false);
@@ -26,13 +29,12 @@ public class BulletStoppingAbility : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && isAbilityActive && !isCooldown)
         {
             StopBullets();
+            StartCooldown();
         }
     }
-
-
 
     private void StopBullets()
     {
@@ -45,12 +47,12 @@ public class BulletStoppingAbility : MonoBehaviour
             {
                 bulletRb.isKinematic = true;
                 collider.enabled = false;
-                Destroy(collider.gameObject); // Destroy the bullet
+                Destroy(collider.gameObject);
             }
         }
 
-        // Spawn the sphere effect at the player's position
         sphereEffect = Instantiate(sphereEffectPrefab, transform.position, Quaternion.identity);
+        sphereEffect.layer = sphereEffectLayer;
         sphereEffectMaterial = sphereEffect.GetComponent<Renderer>().material;
         sphereEffect.transform.localScale = Vector3.zero;
         sphereEffect.SetActive(false);
@@ -81,5 +83,19 @@ public class BulletStoppingAbility : MonoBehaviour
         }
 
         sphereEffect.SetActive(false);
+    }
+
+    private void StartCooldown()
+    {
+        isCooldown = true;
+        isAbilityActive = false;
+        StartCoroutine(CooldownCoroutine());
+    }
+
+    private IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(abilityCooldown);
+        isCooldown = false;
+        isAbilityActive = true;
     }
 }
