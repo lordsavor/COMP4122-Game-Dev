@@ -1,3 +1,10 @@
+/***************************************************************************************
+*    Title: Homing-Missile 
+*    Author: Matthew-J-Spencer
+*    Availability: https://github.com/Matthew-J-Spencer/Homing-Missile
+*
+***************************************************************************************/
+
 using System;
 using UnityEngine;
 
