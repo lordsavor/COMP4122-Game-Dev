@@ -8,7 +8,7 @@ public class sManage : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("Stage_Select");
+        SceneManager.LoadScene("SampleScene");
     }
     public void Continue()
     {

@@ -179,7 +179,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Stage 1
 
-    Elimanation'
+    Tutorial'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -565,6 +565,7 @@ GameObject:
   - component: {fileID: 380582708}
   - component: {fileID: 380582707}
   - component: {fileID: 380582711}
+  - component: {fileID: 380582712}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -663,6 +664,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e948a866a21db4d86f20999c394584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &380582712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380582706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9fd592f45f69d4da64f8f313a0fb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &458274849
@@ -953,7 +966,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 380582712}
+        m_MethodName: StageChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1860302475
 CanvasRenderer:
   m_ObjectHideFlags: 0
