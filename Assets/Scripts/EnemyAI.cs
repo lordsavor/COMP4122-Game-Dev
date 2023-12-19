@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     // State
     bool attackState = false;
     public float sightRange, attackRange;
-    [HideInInspector] public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
 
     void Start()
@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
 
         // Get the direction to the target position
-        Vector3 targetDirection = (transform.position - bulletSpawnPoint.position).normalized;
+        Vector3 targetDirection = (player.transform.position - bulletSpawnPoint.position).normalized;
 
         bullet.GetComponent<Rigidbody>().velocity = targetDirection * bulletBaseSpeed;
 
