@@ -1,4 +1,12 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿/***************************************************************************************
+*    Title: 【Unity Shader】七、透明的Transparent Shader
+*    Availability: https://www.cnblogs.com/guxin/p/unity-transparent-shader-demo.html
+*
+***************************************************************************************/
+
+
+// Directly copying Transparent shader file,
+// We only added "Cull Off" code for enabling two-side renderation on force field effect model.
 
 Shader "Custom/NewSurfaceShader"
 {
