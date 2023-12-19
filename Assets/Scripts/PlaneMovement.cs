@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlaneMovement : MonoBehaviour
 {
+    //UI 
+    public TextMeshProUGUI speedElementUI;
+    public TextMeshProUGUI altitudeElementUI;
+    
     public float maxSpeed;
     public float acceleration;
     private float relativeResponse;
@@ -63,6 +67,8 @@ public class PlaneMovement : MonoBehaviour
     float spinModifier;
 
     private void Update() {
+        //ui
+        updateUI();
 
         // movement
 
@@ -127,6 +133,11 @@ public class PlaneMovement : MonoBehaviour
         //Limiting the max and min speed
         if (currentSpeed <= 10f) currentSpeed = 10f;
         else if (currentSpeed >= 100.5f) currentSpeed = 100f;
+    }
+
+    private void updateUI() {
+        speedElementUI.text = "Speed\n" + currentSpeed.ToString("F0");
+        altitudeElementUI.text = "Altitude\n" + transform.position.y.ToString("F0");
     }
 
 }
