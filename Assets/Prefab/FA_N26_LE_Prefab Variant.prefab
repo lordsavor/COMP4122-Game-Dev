@@ -126,12 +126,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 150
   acceleration: 1
+  startingSpeed: 0
   minTakeOffSpeed: 100
   pitchSpeed: 15
   rollSpeed: 10
   yawSpeed: 3
   tensor: {x: 100, y: 100, z: 100}
   maxAngularVelocity: 1
+  vel: {fileID: 0}
+  velSpinMult: 2
+  velBoostMult: 4
+--- !u!114 &192961364017536668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677420349102927450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dabda168a226b4fab365908a36b8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velCapacity: 100
+  velRegenRate: 20
+  currentVel: 0
+  velSpin: 0
+  velSpinCost: 20
+  velBoost: 0
+  velBoostCost: 10
 --- !u!1001 &6365785512019196029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 359485738817279527, guid: a5bba4471f2b885428541314bad7877b,
         type: 3}
       propertyPath: m_Name
-      value: FA_N26_LE_Prefab
+      value: FA_N26_LE_Prefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 359485738817279527, guid: a5bba4471f2b885428541314bad7877b,
         type: 3}

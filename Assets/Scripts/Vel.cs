@@ -13,6 +13,9 @@ public class Vel : MonoBehaviour
     public bool velSpin = false;
     public float velSpinCost;
 
+    public bool velBoost = false;
+    public float velBoostCost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,15 +26,15 @@ public class Vel : MonoBehaviour
     void Update()
     {
         if (currentVel <= velCapacity) currentVel += velRegenRate * Time.deltaTime;
-        if (Input.GetButton("VelManeuver")) velSpin = ActivateVel(velSpinCost);
-        else velSpin = false;
+        velSpin = (Input.GetButton("VelManeuver"))? ActivateVel(velSpinCost) : false;
+        velBoost = (Input.GetButton("VelBoost")) ? ActivateVel(velSpinCost) : false;
     }
 
     bool ActivateVel(float cost)
     {
         if (currentVel > cost)
         {
-            currentVel -= cost * Time.deltaTime;
+            currentVel -= (cost + velRegenRate) * Time.deltaTime;
             return true;
         }
         else return false;

@@ -62,9 +62,14 @@ public class PlaneMovement : MonoBehaviour
         planeRB.inertiaTensor = tensor;
     }
 
+    // Vel stuff
     public Vel vel;
+
     public float velSpinMult;
     float spinModifier;
+
+    public float velBoostMult;
+    float boostModifier;
 
     private void Update() {
         //ui
@@ -86,9 +91,10 @@ public class PlaneMovement : MonoBehaviour
     private void FixedUpdate() {
 
         // Vel Spin Effect Calculator
+        spinModifier = (vel.velSpin) ? velSpinMult : 1;
 
-        if (vel.velSpin) spinModifier = velSpinMult;
-        else spinModifier = 1;
+        // Vel Boost Effect Calculator
+        boostModifier = (vel.velBoost) ? velBoostMult : 1;
 
         // Determine maxAngularVelocty, might change depending on special abilities (e.g. plane go spin ability)
         // Would've liked it more if I can just max pitch,roll, and yaw separately. So this is a bandaid solution
@@ -115,7 +121,7 @@ public class PlaneMovement : MonoBehaviour
         currentSpeed += thrust * acceleration;
 
         Vector3 lForward = Camera.main.transform.forward;
-        planeRB.AddForce(lForward * maxSpeed * currentSpeed);
+        planeRB.AddForce(lForward * maxSpeed * currentSpeed * boostModifier);
 
         ForceMode mode = ForceMode.Impulse;
         planeRB.AddRelativeTorque(Vector3.right * pitch * pitchSpeed * spinModifier, mode);
