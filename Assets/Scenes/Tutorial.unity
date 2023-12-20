@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 2112733330316924910, guid: 35d38f651e3b60f409f2d9c97b772efa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2112733330316924910, guid: 35d38f651e3b60f409f2d9c97b772efa,
         type: 3}
@@ -273,6 +273,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4744894905008165943, guid: 30c4d708f2ff293429d2961320961fce,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5462133227518680206, guid: 30c4d708f2ff293429d2961320961fce,
         type: 3}
       propertyPath: m_RootOrder
@@ -1411,7 +1416,7 @@ PrefabInstance:
     - target: {fileID: 2112733330316924910, guid: 35d38f651e3b60f409f2d9c97b772efa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2112733330316924910, guid: 35d38f651e3b60f409f2d9c97b772efa,
         type: 3}
@@ -1864,54 +1869,6 @@ RectTransform:
   m_AnchoredPosition: {x: -277, y: -140}
   m_SizeDelta: {x: 72.49681, y: 79.413574}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &791259266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 791259268}
-  - component: {fileID: 791259267}
-  m_Layer: 0
-  m_Name: EnemySpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &791259267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791259266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c822a3d6b5e984aae17827b4bbd722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2112733330316924911, guid: 35d38f651e3b60f409f2d9c97b772efa,
-    type: 3}
-  maximumEnemy: 0
-  targetPoint: {fileID: 1516664907}
-  enemyCount: 0
---- !u!4 &791259268
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791259266}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.2, y: 47.6, z: 253.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &797996639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2683,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 94339041}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388079809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388079808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d03c33a98638c341ab7c3b3a8d9704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6346448195224834980, guid: 3f42eec59b854cb49b25629bd5a99928,
+    type: 3}
+  destroyDuration: 2
 --- !u!54 &1388079810
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2931,11 +2903,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516664906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 908, y: -154, z: 778}
+  m_LocalPosition: {x: 908, y: 0, z: 778}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1565112546 stripped
 GameObject:
@@ -3726,6 +3698,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &726247212542360689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726247212542360681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d03c33a98638c341ab7c3b3a8d9704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6346448195224834980, guid: 3f42eec59b854cb49b25629bd5a99928,
+    type: 3}
+  destroyDuration: 2
 --- !u!1001 &5462133228207269981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3733,6 +3720,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4744894905008165943, guid: 30c4d708f2ff293429d2961320961fce,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5462133227518680206, guid: 30c4d708f2ff293429d2961320961fce,
         type: 3}
       propertyPath: m_RootOrder
