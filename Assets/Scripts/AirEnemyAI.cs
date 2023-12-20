@@ -5,11 +5,12 @@ using UnityEngine;
 public class AirEnemyAI : MonoBehaviour
 {
     
-    public Transform checkpoint;
-    public float moveSpeed = 5f; // Speed when moving towards the checkpoint
+    public Transform Checkpoint;
+    public float moveSpeed = 5f; // Speed when moving towards the Checkpoint
     public float traceSpeed = 10f; // Speed when tracing the player
     public float acceleration = 5f; // Acceleration when transitioning to trace speed
     public float traceOffset = 10f; // Offset distance from the player
+    public float rotationSpeed = 5f; // Adjust the value to control the rotation speed
 
     private bool reachedCheckpoint = false;
     private bool isTracing = false;
@@ -76,12 +77,19 @@ public class AirEnemyAI : MonoBehaviour
 
             // Apply the desired velocity to the rigidbody
             rb.velocity = desiredVelocity;
-            OnDrawGizmos();
+            if (player != null)
+            {
+                if (directionToPlayer != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+                }
+            }
         }
         else if (!reachedCheckpoint)
         {
-            // Move towards the checkpoint with the move speed
-            Vector3 desiredVelocity = (checkpoint.position - transform.position).normalized * moveSpeed;
+            // Move towards the Checkpoint with the move speed
+            Vector3 desiredVelocity = (Checkpoint.position - transform.position).normalized * moveSpeed;
 
             // Apply the desired velocity to the rigidbody
             rb.velocity = desiredVelocity;
@@ -100,15 +108,9 @@ public class AirEnemyAI : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position,targetPosition);
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == checkpoint)
+        if (other.transform == Checkpoint)
         {
             reachedCheckpoint = true;
             rb.velocity = Vector3.zero;

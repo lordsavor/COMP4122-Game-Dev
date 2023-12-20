@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc99bb6ea6da3e41bc3a0a2549474d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedElementUI: {fileID: 0}
+  altitudeElementUI: {fileID: 0}
   maxSpeed: 150
   acceleration: 1
   startingSpeed: 0
