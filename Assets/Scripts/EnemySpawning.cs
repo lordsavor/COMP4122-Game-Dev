@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawning : MonoBehaviour
 {
     [SerializeField] public GameObject enemyPrefab;
-    [SerializeField] public int maximumEnemy = 10;
+    [SerializeField] public int maximumEnemy = 0;
     [SerializeField] public Transform targetPoint;
 
     public int enemyCount;
