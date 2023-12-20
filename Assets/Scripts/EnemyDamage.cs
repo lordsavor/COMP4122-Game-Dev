@@ -5,17 +5,31 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     public int maxHits = 10; // Set the maximum number of hits required to make the enemy disappear
+    private HashSet<GameObject> hitBullets = new HashSet<GameObject>();
     private int currentHits = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the triggering object is a bullet (you can customize the tag or layer)
-        if (other.CompareTag("Bullet"))
+        HandleHitObject(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        HandleHitObject(collision.gameObject);
+    }
+
+    private void HandleHitObject(GameObject obj)
+    {
+        // Check if the object is a bullet (you can customize the tag or layer)
+        if (obj.CompareTag("Bullet") && !hitBullets.Contains(obj))
         {
+            // Add the bullet to the set to avoid double counting
+            hitBullets.Add(obj);
+
             // Increase the hit count
             currentHits++;
 
-            Destroy(other.gameObject);
+            Destroy(obj);
 
             // Check if the maximum hits have been reached
             if (currentHits >= maxHits)
