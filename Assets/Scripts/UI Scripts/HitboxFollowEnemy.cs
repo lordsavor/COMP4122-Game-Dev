@@ -12,25 +12,23 @@ public class HitboxFollowEnemy : MonoBehaviour
 
     void Start() { 
         cam = Camera.main;
-        //If not looking at the enemy, place the hitbox below the plane
         belowCamera = new Vector3(0, -1000, 0);
     }
     
     void Update()
     {
-        var targetRender = target.GetComponent<Renderer>();
-        if (IsVisible(target)) {
-            Vector3 pos = cam.WorldToScreenPoint(enemyLookAt.position + coords);
-            if (transform.position != pos) transform.position = pos;
+        try {
+            var targetRender = target.GetComponent<Renderer>();
+            if (IsVisible(target)) {
+                Vector3 pos = cam.WorldToScreenPoint(enemyLookAt.position + coords);
+                    if (transform.position != pos) transform.position = pos;
+            }
+            else {
+                transform.position = cam.transform.position + belowCamera;
+            }
+        } catch{
+            Destroy(this.gameObject);
         }
-        else {
-            transform.position = cam.transform.position + belowCamera;
-        }
-
-        //if(can see the enemy)
-        //Vector3 pos = cam.WorldToScreenPoint(enemyLookAt.position + coords);
-        //if (transform.position != pos) transform.position = pos;
-        //}
     }
 
     private bool IsVisible(GameObject target)

@@ -17,8 +17,8 @@ public class EnemyHitboxManager : MonoBehaviour
             hitboxInstance.transform.SetParent(GameObject.FindGameObjectWithTag("UICanvas").transform, false);
             hitboxInstance.GetComponent<HitboxFollowEnemy>().enemyLookAt = allEnemies[i].transform;
             hitboxInstance.GetComponent<HitboxFollowEnemy>().target = allEnemies[i];
-
-             
         }
     }
+
+
 }
