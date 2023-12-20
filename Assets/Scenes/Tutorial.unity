@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2112733330316924911, guid: 35d38f651e3b60f409f2d9c97b772efa,
     type: 3}
-  maximumEnemy: 10
+  maximumEnemy: 3
   targetPoint: {fileID: 1516664907}
   enemyCount: 0
 --- !u!4 &791259268

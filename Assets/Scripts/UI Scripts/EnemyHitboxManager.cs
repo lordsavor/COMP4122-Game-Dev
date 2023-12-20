@@ -7,7 +7,7 @@ public class EnemyHitboxManager : MonoBehaviour
 {
     public GameObject hitbox;
     
-    public void Start()
+    public void Awake()
     {
         GameObject[] allEnemies;
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");

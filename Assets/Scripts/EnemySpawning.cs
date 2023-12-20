@@ -13,7 +13,7 @@ public class EnemySpawning : MonoBehaviour
     private int baseZPos;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         baseXPos = (int)transform.position.x;
         baseZPos = (int)transform.position.z;
