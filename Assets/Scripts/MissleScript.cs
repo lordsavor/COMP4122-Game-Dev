@@ -22,7 +22,7 @@ public class MissleScript : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.BoxCast(transform.parent.transform.position, transform.parent.transform.localScale*300f, transform.parent.transform.forward, out hit)) {
+            if (Physics.BoxCast(transform.parent.transform.position, transform.parent.transform.localScale*250f, transform.parent.transform.forward, out hit)) {
                 if(hit.collider.name == "Enemy") {
                     target = hit.transform.gameObject;
                     StartCoroutine(Firemissles(target));

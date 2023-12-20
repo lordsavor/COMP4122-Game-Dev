@@ -15,12 +15,13 @@ public class Checkpoint : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (counter == listOfCheckpoints.Length) {
-            //NEED TO CHANGE SCENE NAME HERE
-            SceneManager.LoadScene("Test Scene");
+        if (other.gameObject.tag == "Plane") {
+            if (counter == listOfCheckpoints.Length) {
+            SceneManager.LoadScene("Main Menu");
         } else {
             listOfCheckpoints[counter].SetActive(true);
             counter = counter + 1;
-        }    
+        }  
+        }  
     }
 }
