@@ -21,8 +21,7 @@ public class EnemyDamage : MonoBehaviour
             // Increase the hit count
             currentHits++;
 
-            // Print a log message to the console
-            Debug.Log("Enemy Hit! Current Hits: " + currentHits);
+            Destroy(collision.gameObject);
 
             // Check if the maximum hits have been reached
             if (currentHits >= maxHits)
