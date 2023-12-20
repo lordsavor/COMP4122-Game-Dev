@@ -6,7 +6,7 @@ public class GunScript : MonoBehaviour
 {
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
-    public float bulletBaseSpeed = 2000;
+    public float bulletBaseSpeed = 300;
     public float roundsPerMinute = 600;
      public float bulletGravityScale = 0.5f;
     
