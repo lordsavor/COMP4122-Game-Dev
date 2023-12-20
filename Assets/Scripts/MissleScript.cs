@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class MissleScript : MonoBehaviour
 {
     public Transform missleSpawnPoint;
@@ -10,6 +10,7 @@ public class MissleScript : MonoBehaviour
     public GameObject target;
     private float timeBetweenShots;
     private bool canFire = true;
+    public TMP_Text UI;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class MissleScript : MonoBehaviour
 
     IEnumerator Firemissles(GameObject targetObject)
     {
+        UI.text = "Missle\n\n\n0 / 1";
         canFire = false;
 
         if(Input.GetMouseButton(1)) { 
@@ -47,6 +49,7 @@ public class MissleScript : MonoBehaviour
 
             yield return new WaitForSeconds(timeBetweenShots);
         }
+        UI.text = "Missle\n\n\n1 / 1";
         canFire = true;
     }
 }
