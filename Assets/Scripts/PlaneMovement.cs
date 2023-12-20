@@ -143,7 +143,7 @@ public class PlaneMovement : MonoBehaviour
     }
 
     private void updateUI() {
-        speedElementUI.text = "Speed\n" + currentSpeed.ToString("F0");
+        speedElementUI.text = "Speed\n" + planeRB.velocity.magnitude.ToString("F0");
         altitudeElementUI.text = "Altitude\n" + transform.position.y.ToString("F0");
     }
 
