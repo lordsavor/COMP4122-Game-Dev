@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470862797465487801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlaneEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470862797850987114}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,6 +77,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1481455632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776920991858228837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d03c33a98638c341ab7c3b3a8d9704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 6346448195224834980, guid: 3f42eec59b854cb49b25629bd5a99928,
+    type: 3}
+  destroyDuration: 2
 --- !u!114 &1470862796381797913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,20 +121,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7873058181185562387, guid: 41d0bda255409a54f9642828fdc85982,
     type: 3}
   bulletBaseSpeed: 200
---- !u!114 &1481455632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776920991858228837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d03c33a98638c341ab7c3b3a8d9704c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyEffect: {fileID: 6346448195224834980, guid: 3f42eec59b854cb49b25629bd5a99928,
-    type: 3}
 --- !u!1001 &1470862796549374772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +183,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8068073526183931155, guid: 4ae5ff971695c7b4b949136b23e53faa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 4ae5ff971695c7b4b949136b23e53faa,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -192,10 +198,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 144504cad81d7384f82377975a822733, type: 2}
+    - target: {fileID: -3325035431548957344, guid: 4ae5ff971695c7b4b949136b23e53faa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ae5ff971695c7b4b949136b23e53faa,
         type: 3}
       propertyPath: m_Name
       value: Spaceship
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ae5ff971695c7b4b949136b23e53faa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae5ff971695c7b4b949136b23e53faa, type: 3}
