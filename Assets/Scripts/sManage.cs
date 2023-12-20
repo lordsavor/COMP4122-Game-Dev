@@ -16,7 +16,7 @@ public class sManage : MonoBehaviour
     }
     public void Tutorial()
     {
-
+        SceneManager.LoadScene("Tutorial");
     }
     public void Training()
     {

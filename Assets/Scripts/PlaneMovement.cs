@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlaneMovement : MonoBehaviour
 {
-    //UI 
+    //UI
     public TextMeshProUGUI speedElementUI;
     public TextMeshProUGUI altitudeElementUI;
     
