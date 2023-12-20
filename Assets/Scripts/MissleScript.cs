@@ -15,6 +15,8 @@ public class MissleScript : MonoBehaviour
     void Start()
     {
         timeBetweenShots = 600f / roundsPerMinute;
+        UI.text = "Missle\n\n\n1 / 1";
+        canFire = true;
     }
 
     void Update()

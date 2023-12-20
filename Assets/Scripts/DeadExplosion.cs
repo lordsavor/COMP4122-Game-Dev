@@ -9,7 +9,10 @@ public class DeadExplosion : MonoBehaviour
 
     private void OnDestroy()
     {
-        ParticleSystem effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(effect.gameObject, destroyDuration);
+        if (destroyEffect != null)
+        {
+            ParticleSystem effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+            Destroy(effect.gameObject, destroyDuration);
+        }
     }
 }

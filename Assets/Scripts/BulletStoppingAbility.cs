@@ -7,29 +7,26 @@ public class BulletStoppingAbility : MonoBehaviour
     public float destroyInterval = 5f;
     public LayerMask bulletLayer;
     public float stoppingRadius = 50f;
-    public float maxStoppingRange = 2f;
     public float stoppingTime = 1f;
     public GameObject sphereEffectPrefab;
     public float abilityCooldown = 10f; // Cooldown time in seconds
 
-    private GameObject sphereEffect;
     private Material sphereEffectMaterial;
-    public LayerMask sphereEffectLayer;
     private bool isCooldown = false; // Tracks whether the ability is on cooldown
     private bool isAbilityActive = true; // Tracks whether the ability can currently be used
 
     private void Start()
     {
-        sphereEffect = Instantiate(sphereEffectPrefab, transform.position, Quaternion.identity);
-        sphereEffect.layer = sphereEffectLayer;
-        sphereEffectMaterial = sphereEffect.GetComponent<Renderer>().material;
-        sphereEffect.transform.localScale = Vector3.zero;
-        sphereEffect.SetActive(false);
+        Renderer sphereRenderer = sphereEffectPrefab.GetComponent<Renderer>();
+        if (sphereRenderer != null)
+        {
+            sphereEffectMaterial = sphereRenderer.sharedMaterial;
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && isAbilityActive && !isCooldown)
+        if (Input.GetKeyDown(KeyCode.P) && isAbilityActive && !isCooldown)
         {
             StopBullets();
             StartCooldown();
@@ -38,51 +35,26 @@ public class BulletStoppingAbility : MonoBehaviour
 
     private void StopBullets()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, stoppingRadius, bulletLayer);
-
-        foreach (Collider collider in colliders)
-        {
-            Rigidbody bulletRb = collider.GetComponent<Rigidbody>();
-            if (bulletRb != null)
-            {
-                bulletRb.isKinematic = true;
-                collider.enabled = false;
-                Destroy(collider.gameObject);
-            }
-        }
-
-        sphereEffect = Instantiate(sphereEffectPrefab, transform.position, Quaternion.identity);
-        sphereEffect.layer = sphereEffectLayer;
-        sphereEffectMaterial = sphereEffect.GetComponent<Renderer>().material;
-        sphereEffect.transform.localScale = Vector3.zero;
-        sphereEffect.SetActive(false);
-
         StartCoroutine(ExpandSphereEffectCoroutine());
-    }
-
-    private IEnumerator DestroyBulletCoroutine(GameObject bullet)
-    {
-        yield return new WaitForSeconds(destroyInterval);
-        Destroy(bullet);
     }
 
     private IEnumerator ExpandSphereEffectCoroutine()
     {
-        sphereEffect.SetActive(true);
+        GameObject sphereEffect = Instantiate(sphereEffectPrefab, transform.position, Quaternion.identity);
         float elapsedTime = 0f;
 
         while (elapsedTime < stoppingTime)
         {
             float t = elapsedTime / stoppingTime;
-            float currentScale = Mathf.Lerp(0f, maxStoppingRange * 2f, t);
+            float currentScale = Mathf.Lerp(0f, stoppingRadius * 2f, t);
             sphereEffect.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
-            sphereEffectMaterial.SetFloat("_Alpha", 1f - t);
+            sphereEffectMaterial.SetFloat("_AlphaScale", 1f - t);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        sphereEffect.SetActive(false);
+        Destroy(sphereEffect);
     }
 
     private void StartCooldown()

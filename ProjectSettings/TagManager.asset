@@ -8,6 +8,8 @@ TagManager:
   - Plane
   - Target
   - Bullet
+  - Enemy
+  - UICanvas
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Enemy
   - Bullet
   - Effect
-  - 
+  - Missile
   - 
   - 
   - 

@@ -15,7 +15,6 @@ namespace Tarodev {
         [Header("REFERENCES")] 
         [SerializeField] private Rigidbody _rb;
         [SerializeField] private GameObject _target;
-        [SerializeField] private GameObject _explosionPrefab;
 
         [Header("MOVEMENT")] 
         [SerializeField] private float _speed = 15;
@@ -69,10 +68,9 @@ namespace Tarodev {
             _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
         }
 
-        private void OnCollisionEnter(Collision collision) {
-            if(_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
-   
+        private void OnCollisionEnter(Collision collision)
+        {
+            Destroy(collision.gameObject); // Destroy the collided object
             Destroy(gameObject);
         }
 
