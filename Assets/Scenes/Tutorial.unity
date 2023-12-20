@@ -3468,7 +3468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textSpeed: 0.03
   texts:
-  - Welcome to Skies of Relia, a Flight Combat Simulator
+  - Welcome to Skies of Reliquia, a Flight Combat Simulator
   - You can control the pitch of the plane, by "w" and "d" or by pivoting your mouse
     up and down
   - Turn the plane left or right by using "q" and "e"
