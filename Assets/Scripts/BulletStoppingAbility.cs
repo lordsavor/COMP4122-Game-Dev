@@ -26,7 +26,7 @@ public class BulletStoppingAbility : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && isAbilityActive && !isCooldown)
+        if (Input.GetKeyDown(KeyCode.R) && isAbilityActive && !isCooldown)
         {
             StopBullets();
             StartCooldown();
