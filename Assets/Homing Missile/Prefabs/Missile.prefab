@@ -188,10 +188,10 @@ MonoBehaviour:
   _target: {fileID: 0}
   _explosionPrefab: {fileID: 5923536954740281492, guid: 3f42eec59b854cb49b25629bd5a99928,
     type: 3}
-  _speed: 15
+  _speed: 100
   _rotateSpeed: 95
-  _maxDistancePredict: 100
-  _minDistancePredict: 5
+  _maxDistancePredict: 30
+  _minDistancePredict: 30
   _maxTimePrediction: 5
   _deviationAmount: 50
   _deviationSpeed: 2

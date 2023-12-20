@@ -298,15 +298,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedElementUI: {fileID: 1110287431}
   altitudeElementUI: {fileID: 656481007}
-  missileSphereRadius: 10
   maxSpeed: 150
   acceleration: 1
+  startingSpeed: 0
   minTakeOffSpeed: 100
   pitchSpeed: 15
   rollSpeed: 10
   yawSpeed: 3
   tensor: {x: 100, y: 100, z: 100}
   maxAngularVelocity: 1
+  vel: {fileID: 192961364017536668, guid: 2707c60f78e9424418b97e8b472fd4bb, type: 3}
+  velSpinMult: 0
+  velBoostMult: 0
 --- !u!65 &166225388
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -561,7 +564,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &374195402
@@ -1060,7 +1063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0412e047c26ad9b4c98b64077cc486a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20bb76b5cb2d9484ab411c5d26240298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1563,7 +1566,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &877568801
@@ -1753,7 +1756,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1110287429
@@ -2255,7 +2258,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1388079808 stripped
@@ -2442,7 +2445,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1565112546 stripped
@@ -2724,7 +2727,7 @@ SpriteRenderer:
   m_Size: {x: 14.1, y: 13.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1792370788

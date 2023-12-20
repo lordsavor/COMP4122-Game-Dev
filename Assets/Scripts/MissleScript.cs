@@ -20,7 +20,14 @@ public class MissleScript : MonoBehaviour
     {
         if (Input.GetMouseButton(1) && canFire)
         {
-            StartCoroutine(Firemissles(target));
+            RaycastHit hit;
+
+            if (Physics.BoxCast(transform.parent.transform.position, transform.parent.transform.localScale*300f, transform.parent.transform.forward, out hit)) {
+                if(hit.collider.name == "Enemy") {
+                    target = hit.transform.gameObject;
+                    StartCoroutine(Firemissles(target));
+                }
+            }
         }
     }
 
@@ -28,16 +35,18 @@ public class MissleScript : MonoBehaviour
     {
         canFire = false;
 
-        GameObject missile = Instantiate(misslePrefab, missleSpawnPoint.position, missleSpawnPoint.rotation);
-        Tarodev.Missile missileScript = missile.GetComponent<Tarodev.Missile>();
-        if (missileScript != null)
-        {
-            missileScript.ChangeTarget(targetObject);
-            missileScript.SetIsCloned(true);
+        if(Input.GetMouseButton(1)) { 
+            GameObject missile = Instantiate(misslePrefab, missleSpawnPoint.position, missleSpawnPoint.rotation);
+
+            Tarodev.Missile missileScript = missile.GetComponent<Tarodev.Missile>();
+
+            if (missileScript != null) {
+                missileScript.ChangeTarget(targetObject);
+                missileScript.SetIsCloned(true);
+            }
+
+            yield return new WaitForSeconds(timeBetweenShots);
         }
-
-        yield return new WaitForSeconds(timeBetweenShots);
-
         canFire = true;
     }
 }
